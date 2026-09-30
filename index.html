@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>류진환 포트폴리오</title>
+<meta name="description" content="설계부터 고민하는 백엔드 개발자 류진환(Roof)의 포트폴리오">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f6f2; --surface:#ffffff; --ink:#15161a; --muted:#5d6068; --line:#e3e1da;
+  --accent:#1f6f5c; --accent-soft:#e3efe9; --gold:#b8862b;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1113; --surface:#171a1d; --ink:#ecebe6; --muted:#9a9ea6; --line:#262a2f;
+    --accent:#5cc2a5; --accent-soft:#16302a; --gold:#e0b25a;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1113; --surface:#171a1d; --ink:#ecebe6; --muted:#9a9ea6; --line:#262a2f;
+  --accent:#5cc2a5; --accent-soft:#16302a; --gold:#e0b25a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:"Noto Sans KR",system-ui,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
+.mono{font-family:"IBM Plex Mono",monospace}
+.wrap{max-width:920px;margin:0 auto;padding:0 16px}
+a{color:inherit}
+
+nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+nav .logo{font-weight:900;text-decoration:none}
+nav ul{display:flex;gap:20px;list-style:none;font-size:14px}
+nav ul a{text-decoration:none;color:var(--muted)}
+nav ul a:hover{color:var(--accent)}
+@media (max-width:560px){nav ul{gap:12px;font-size:13px}nav ul li.hide-sm{display:none}}
+
+header{padding:96px 0 72px}
+.eyebrow{font-size:13px;color:var(--accent);letter-spacing:.08em;margin-bottom:16px}
+h1{font-size:clamp(34px,6vw,56px);line-height:1.2;font-weight:900;letter-spacing:-.02em}
+h1 em{font-style:normal;color:var(--accent)}
+.lead{margin-top:20px;font-size:18px;color:var(--muted);max-width:620px}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border-radius:999px;border:1px solid var(--line);background:var(--surface);text-decoration:none;font-size:14px;font-weight:500}
+.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn:hover{border-color:var(--accent)}
+
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2{font-size:14px;letter-spacing:.12em;color:var(--muted);font-weight:500;margin-bottom:28px}
+
+.stack{display:grid;grid-template-columns:120px 1fr;gap:14px 20px}
+.stack dt{font-weight:700;font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:13px;padding:3px 10px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+.chip.plain{background:transparent;border:1px solid var(--line);color:var(--muted)}
+@media (max-width:560px){.stack{grid-template-columns:1fr;gap:6px}.stack dd{margin-bottom:12px}}
+
+.project{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:28px;margin-bottom:18px}
+.project.featured{border-color:var(--accent)}
+.phead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px}
+.project h3{font-size:22px;font-weight:900;letter-spacing:-.01em}
+.meta{font-size:13px;color:var(--muted)}
+.badge{display:inline-block;font-size:12px;font-weight:700;color:var(--gold);border:1px solid var(--gold);border-radius:999px;padding:1px 10px;margin-left:6px;vertical-align:middle}
+.summary{margin:10px 0 18px;color:var(--muted)}
+.project ul{list-style:none;display:grid;gap:10px;margin-bottom:18px}
+.project li{padding-left:18px;position:relative}
+.project li::before{content:"";position:absolute;left:0;top:.72em;width:7px;height:7px;border-radius:2px;background:var(--accent)}
+.project li b{font-weight:700}
+
+.project h4{font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.04em;margin:18px 0 10px}
+.project code{font-family:"IBM Plex Mono",monospace;font-size:.86em;background:var(--accent-soft);padding:1px 5px;border-radius:4px}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:0 0 6px}
+.facts div{border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.facts b{display:block;font-size:22px;font-weight:900;line-height:1.2}
+.facts span{font-size:12px;color:var(--muted)}
+@media (max-width:560px){.facts{grid-template-columns:repeat(2,1fr)}}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:4px 0 16px;font-size:12px}
+.flow .node{border:1px solid var(--line);border-radius:8px;padding:6px 10px}
+.flow .node.strong{border-color:var(--accent);color:var(--accent);font-weight:500}
+.flow .arrow{color:var(--muted)}
+.flow .outs{display:flex;flex-direction:column;gap:4px}
+.flow .outs span{border:1px dashed var(--line);border-radius:8px;padding:3px 10px}
+.flow .outs span.ok{border-style:solid;border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+
+.weights{display:flex;height:34px;border-radius:8px;overflow:hidden;margin:4px 0 18px;font-size:12px}
+.weights div{display:flex;align-items:center;justify-content:center;color:#fff;white-space:nowrap;overflow:hidden;padding:0 4px}
+.w1{background:#1f6f5c;flex:30}.w2{background:#2e8a73;flex:25}.w3{background:#46a38a;flex:20}.w4{background:#6cbba4;flex:15}.w5{background:#98d2c0;color:#0f2a22!important;flex:10}
+
+.layers{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:4px 0 18px}
+.layers div{border:1px dashed var(--line);border-radius:10px;padding:10px 12px;font-size:13px}
+.layers span{display:block;font-size:11px;color:var(--accent)}
+@media (max-width:560px){.layers{grid-template-columns:1fr}}
+
+.small-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.small-grid .project{margin:0}
+@media (max-width:720px){.small-grid{grid-template-columns:1fr}}
+
+.timeline{list-style:none;display:grid;gap:18px}
+.timeline li{display:grid;grid-template-columns:130px 1fr;gap:16px}
+.timeline .when{font-size:13px;color:var(--muted);padding-top:2px}
+.timeline b{font-weight:700}
+@media (max-width:560px){.timeline li{grid-template-columns:1fr;gap:0}}
+
+.philo{font-size:clamp(20px,3vw,26px);font-weight:700;line-height:1.5;letter-spacing:-.01em}
+.philo em{font-style:normal;color:var(--accent)}
+.philo + p{margin-top:14px;color:var(--muted)}
+
+footer{padding:40px 0 64px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+.theme-toggle{background:none;border:1px solid var(--line);border-radius:999px;padding:4px 10px;color:var(--muted);cursor:pointer;font-size:13px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#" class="logo">Roof<span style="color:var(--accent)">.</span></a>
+    <ul>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li class="hide-sm"><a href="#activities">Activities</a></li>
+      <li><button class="theme-toggle" id="themeBtn" aria-label="테마 전환">◐</button></li>
+    </ul>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow mono">BACKEND DEVELOPER · 류진환</p>
+    <h1>규칙을 먼저 설계하고<br><em>코드로 책임지는</em> 백엔드 개발자</h1>
+    <p class="lead">도메인 규칙을 문서로 확정하고, 동시성·인증·개인정보·데이터 정합성까지 코드로 책임집니다. Java·Spring Boot와 NestJS로 서비스를 혼자 끝까지 만들어 봤습니다.</p>
+    <div class="links">
+      <a class="btn primary" href="https://github.com/roof1004" target="_blank" rel="noopener">GitHub →</a>
+      <a class="btn" href="mailto:your.email@example.com">✉ your.email@example.com</a>
+    </div>
+  </div>
+</header>
+
+<section id="stack">
+  <div class="wrap">
+    <h2 class="mono">01 — TECH STACK</h2>
+    <dl class="stack">
+      <dt>Backend</dt>
+      <dd class="chips"><span class="chip">Java 21/25</span><span class="chip">Spring Boot</span><span class="chip">Spring Security</span><span class="chip">JPA</span><span class="chip">NestJS</span><span class="chip">Prisma</span><span class="chip">TypeScript</span></dd>
+      <dt>DB · Infra</dt>
+      <dd class="chips"><span class="chip">MySQL</span><span class="chip">PostgreSQL</span><span class="chip">Supabase</span><span class="chip">Redis</span><span class="chip">Flyway</span><span class="chip">Docker</span><span class="chip">OpenAPI</span></dd>
+      <dt>Front · Mobile</dt>
+      <dd class="chips"><span class="chip plain">React</span><span class="chip plain">React Native (Expo)</span><span class="chip plain">Next.js</span><span class="chip plain">Vite</span></dd>
+      <dt>Tools</dt>
+      <dd class="chips"><span class="chip plain">Git · GitHub</span><span class="chip plain">Gitleaks</span><span class="chip plain">IntelliJ</span><span class="chip plain">Claude Code</span></dd>
+    </dl>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2 class="mono">02 — PROJECTS</h2>
+
+    <article class="project featured">
+      <div class="phead">
+        <h3>⚽ 에어리어 리그 <span class="meta mono">area_league</span></h3>
+        <span class="meta">1인 개발 · 상용 출시 준비</span>
+      </div>
+      <p class="summary">시 단위 85개 리그의 순위, 경기 일정·매칭, 용병 모집까지 다루는 아마추어 축구 앱 (iOS/Android)</p>
+      <div class="facts">
+        <div><b>15</b><span>백엔드 도메인</span></div>
+        <div><b>122</b><span>API 오퍼레이션</span></div>
+        <div><b>43</b><span>Prisma 모델</span></div>
+        <div><b>93</b><span>커밋 (전부 본인)</span></div>
+      </div>
+      <h4>스펙 우선 개발</h4>
+      <ul>
+        <li>OpenAPI 스펙을 먼저 확정하고 <b>Redocly lint</b>로 검증, 스펙에서 타입을 생성해 서버와 앱의 계약을 맞춤</li>
+        <li>결정은 <b>DECISIONS.md</b>에 근거(규칙 번호·문서 절)와 함께 기록</li>
+      </ul>
+      <h4>인증 · 보안</h4>
+      <ul>
+        <li>Refresh 토큰 <b>회전 + 재사용 탐지 시 전 세션 폐기</b>, access 토큰은 무상태·HS256 고정으로 alg 다운그레이드 차단</li>
+        <li>가입·재인증·번호변경용 단기 토큰 5종을 <b>단회 소비</b> — <code>ConsumedTokenJti</code> insert의 unique 충돌 = 재사용 거부</li>
+        <li>카카오·구글·네이버·Apple 소셜 검증기를 공통 인터페이스 뒤에 provider별로 구현 (<code>jose</code> 하나로 JWKS 검증과 자체 토큰 겸용)</li>
+        <li>env 스키마를 <b>fail-closed</b>로 수정 — NODE_ENV가 .env에만 있을 때 운영에서 fail-open 되던 문제, Gitleaks pre-commit 훅 운영</li>
+      </ul>
+      <h4>개인정보 보호</h4>
+      <ul>
+        <li>전화번호는 <b>E.164 정규화 → HMAC(도메인 접두사 분리) + AES-256-GCM</b>으로 저장, 원문은 요청 처리 중 메모리에만 존재</li>
+        <li>SMS 인증: 3분 만료 · 5회 실패 시 30분 잠금(423) · 번호당 10회, IP당 20회/일 — IP도 원문 대신 해시로 카운트</li>
+        <li>차단된 사용자 프로필은 403이 아닌 <b>404로 은폐</b>해 존재 여부 노출을 막음</li>
+      </ul>
+      <h4>도메인 로직</h4>
+      <div class="flow mono" aria-label="경기 결과 상호검증 흐름">
+        <div class="node">A팀 제출</div><div class="node">B팀 제출</div>
+        <div class="arrow">→</div>
+        <div class="node strong">대조</div>
+        <div class="arrow">→</div>
+        <div class="outs"><span class="ok">승인 · 기록 반영</span><span>불일치 · 재입력</span><span>관리자 중재</span></div>
+      </div>
+      <ul>
+        <li>경기 결과 <b>양 팀 상호검증</b> — 승인 시 양 팀 시즌 기록과 득점자 기록을 한 트랜잭션에서 증분</li>
+        <li>순위 정렬기를 순수 함수로 분리 — 승점 → 골득실 → 다득점 → <b>동률 그룹 내 승자승</b> → 가나다</li>
+        <li><b>멱등성 키 인터셉터</b> (유저·경로·키 스코프, 같은 키에 다른 본문이면 422)</li>
+        <li>시즌 종료 스냅샷·리마인더·만료 정리 등 <b>배치 작업</b>을 재실행해도 안전하게 설계</li>
+      </ul>
+      <div class="chips"><span class="chip">NestJS</span><span class="chip">Prisma 6</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span><span class="chip">OpenAPI</span><span class="chip plain">Expo</span></div>
+    </article>
+
+    <article class="project featured">
+      <div class="phead">
+        <h3>🥚 하루도감 <span class="meta mono">day_log</span></h3>
+        <span class="meta">백엔드 1인 개발</span>
+      </div>
+      <p class="summary">습관을 인증하면 인증 패턴(규칙성·시간대·완주력·집중도·강도)에 따라 알이 특정 종으로 부화하는 자기관리 게임</p>
+      <div class="facts">
+        <div><b>16</b><span>도메인 패키지</span></div>
+        <div><b>327</b><span>Java 파일</span></div>
+        <div><b>20</b><span>Flyway 마이그레이션</span></div>
+        <div><b>30</b><span>기능 PR</span></div>
+      </div>
+      <h4>동시성 제어</h4>
+      <ul>
+        <li>인증과 부화가 겹치면 알 XP·재화가 이중 지급되던 문제 → 활성 알을 <b>PESSIMISTIC_WRITE 락으로 트랜잭션 첫 접근에서 조회</b>하도록 순서 재배치</li>
+        <li>재화 지갑은 <b>원장(ledger) 기반</b> + 비관적 락, <code>@Version</code> 낙관적 락은 안전망으로 유지, 락 충돌은 500 대신 409로 매핑</li>
+      </ul>
+      <h4>종 판정 알고리즘</h4>
+      <ul>
+        <li>인증 기록에서 5개 축 지표를 계산해 종별 점수 산출 → <b>점수 비례 확률</b>로 종 선택 (설정값으로 순위 가중 모드와 전환)</li>
+        <li>종마다 <b>시그니처 게이트</b>를 두어, 핵심 지표가 0인데 범용 축 점수로 당선되던 문제 해결 — 의도 일치 10/12 → 11/12</li>
+        <li>DB 없이 도는 <b>12개 패턴 밸런스 리포트 생성기</b>와 회귀 테스트로 규칙 변경을 검증</li>
+      </ul>
+      <h4>인증 · 데이터 규칙</h4>
+      <ul>
+        <li>CHECK/PHOTO/STEP/COUNT/집중 타이머 5가지 인증, 습관별·유저별 <b>일일 XP 2중 상한</b>, 취소는 역거래로 XP·재화 회수</li>
+        <li>집중 타이머는 클라이언트 보고 시간을 <b>서버 경과시간 + 버퍼</b>로 상한해 과대 신고 차단</li>
+        <li>KST 새벽 5시 기준 <code>service_date</code>를 UTC 저장 DB의 생성 컬럼과 앱 코드에서 동일하게 계산</li>
+        <li>외부 노출 ID를 <b>UUIDv7 / BINARY(16)</b> <code>public_id</code>로 분리</li>
+        <li>Refresh 토큰 해시 저장·회전, 유예 기간 회원 탈퇴, 차단·신고, 약관 동의 이력 등 출시 필수 기능</li>
+      </ul>
+      <div class="chips"><span class="chip">Java 25</span><span class="chip">Spring Boot 4.1</span><span class="chip">Spring Security</span><span class="chip">JPA</span><span class="chip">MySQL 8.4</span><span class="chip">Flyway</span><span class="chip">JWT</span></div>
+    </article>
+
+    <article class="project featured">
+      <div class="phead">
+        <h3>🍳 레시비 <span class="badge">AI 바이브톤 최우수상</span></h3>
+        <span class="meta">2026.09 · 백엔드 담당</span>
+      </div>
+      <p class="summary">유튜브 레시피 URL을 넣으면 "매장에서 사 먹는 가격 vs 직접 만드는 재료비"를 비교해 주는 서비스 · <a href="https://recibi.kr" target="_blank" rel="noopener">recibi.kr</a></p>
+      <h4>가격 3계층</h4>
+      <div class="layers">
+        <div><span class="mono">TIER 1</span>KAMIS 실시세 (하루 1회 캐시) · 시드 스냅샷</div>
+        <div><span class="mono">TIER 2</span>네이버 쇼핑 API / Gemini 검색 그라운딩</div>
+        <div><span class="mono">TIER 3</span>사용자 직접 입력</div>
+      </div>
+      <ul>
+        <li>2계층은 후보 단가의 <b>중앙값</b>을 쓰고 출처 없는 값은 버림 — 화면에는 "추정치" 배지로 구분</li>
+        <li><b>레시피 추출 파이프라인</b>(PoC → 제품 이식, 약 7,000줄) — 설명란에 재료가 있는 영상이 20%뿐인 것을 확인하고 <b>설명란 → 고정 댓글</b> 폴백 사슬로 설계</li>
+        <li><b>재료명 정규화 3단계</b> — 규칙 → DB 별칭 캐시 → 남은 것만 LLM 일괄 호출, <b>이름당 LLM 1회</b>로 비용 고정</li>
+        <li>조리 단위(큰술·컵·개·모)를 g/ml로 환산하고, 설명란의 계량 기준("1컵은 180ml 종이컵")을 찾아 기본값보다 우선 적용</li>
+        <li>팬트리 추천은 LLM이 메뉴만 추론하고 금액은 파이프라인에서만 계산 — 스키마에 가격 필드를 두지 않아 <b>금액 환각 차단</b></li>
+        <li>Supabase 스키마·<b>RLS 정책</b>·마스터 데이터 마이그레이션, 카카오 로그인·탈퇴, 북마크 API</li>
+      </ul>
+      <div class="chips"><span class="chip">TypeScript</span><span class="chip">Next.js Route Handlers</span><span class="chip">Supabase</span><span class="chip">Gemini</span></div>
+    </article>
+
+    <article class="project">
+      <div class="phead">
+        <h3>🚨 런포유 <span class="meta mono">Run For You</span></h3>
+        <span class="meta">B2B SaaS · 5인 팀</span>
+      </div>
+      <p class="summary">프랜차이즈 카페·무인매장 설비 고장 시 최적의 A/S 기사를 실시간 배정하는 플랫폼</p>
+      <ul>
+        <li><b>18개 테이블 ERD 단독 설계</b>, LMS 확장 도메인(19~28번 테이블)까지 설계</li>
+        <li><b>가중치 기반 기사 배정 알고리즘</b> 설계</li>
+      </ul>
+      <div class="weights mono" aria-label="배정 가중치">
+        <div class="w1">거리 30</div><div class="w2">전문 25</div><div class="w3">평점 20</div><div class="w4">가용 15</div><div class="w5">긴급 10</div>
+      </div>
+      <ul>
+        <li><b>SSE</b> 실시간 알림과 중복 배정을 막는 <b>Redis 분산 락</b> 아키텍처 설계</li>
+      </ul>
+      <div class="chips"><span class="chip">Spring Boot</span><span class="chip">JPA</span><span class="chip">MySQL</span><span class="chip">Redis</span><span class="chip">SSE</span></div>
+    </article>
+
+    <div class="small-grid">
+      <article class="project">
+        <h3>🎯 라인업</h3>
+        <p class="summary">AI 채용공고 추천 서비스</p>
+        <ul>
+          <li>프로필-공고 적합도 <b>가중치 모델</b> 설계</li>
+          <li>북마크 <b>수직 슬라이스</b>(Flyway → API → 화면), 인증 구현</li>
+        </ul>
+        <div class="chips"><span class="chip">Spring Boot</span><span class="chip">Flyway</span><span class="chip plain">Next.js</span></div>
+      </article>
+      <article class="project">
+        <h3>💬 ErrorLog</h3>
+        <p class="summary">개발자 소셜 플랫폼 · 멋쟁이사자처럼 팀 프로젝트</p>
+        <ul>
+          <li><b>좋아요·댓글·팔로우</b> 도메인 담당</li>
+          <li>팀원 코드와 <b>Spring Security 통합</b>, 머지 후 버그 수정</li>
+        </ul>
+        <div class="chips"><span class="chip">Java 21</span><span class="chip">Spring Boot</span><span class="chip">MySQL</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="activities">
+  <div class="wrap">
+    <h2 class="mono">03 — ACTIVITIES &amp; EDUCATION</h2>
+    <ul class="timeline">
+      <li><span class="when mono">2026.09</span><div><b>🏆 AI 바이브톤 최우수상</b><br><span style="color:var(--muted)">레시비 — 백엔드 담당</span></div></li>
+      <li><span class="when mono">2026.07</span><div><b>네이버 부스트캠프 AI Agent Challenge</b><br><span style="color:var(--muted)">AI 에이전트 설계·활용 전반 학습</span></div></li>
+      <li><span class="when mono">2026.02 – 07</span><div><b>멋쟁이사자처럼 백엔드 Java 과정</b><br><span style="color:var(--muted)">ErrorLog, AnimalTalk 팀 프로젝트</span></div></li>
+      <li><span class="when mono">—</span><div><b>NYPC Code Battle 39위</b></div></li>
+      <li><span class="when mono">재학</span><div><b>전남대학교 컴퓨터공학과</b><br><span style="color:var(--muted)">4학년 휴학 중</span></div></li>
+      <li><span class="when mono">졸업</span><div><b>덕수고등학교 컴퓨터정보과</b></div></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="mono">04 — HOW I WORK</h2>
+    <p class="philo">결정은 문서로, 규칙은 코드로, <em>검증은 테스트로</em>.</p>
+    <p>기획서와 API 스펙을 먼저 확정하고, 결정의 근거를 DECISIONS 문서에 남깁니다. AI를 설계 파트너로 활용해 반론을 받아 보되, 모든 선택을 직접 설명할 수 있는 코드를 지향합니다.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 류진환 (Roof) · <a href="https://github.com/roof1004">github.com/roof1004</a></div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('themeBtn');
+  try{var saved=localStorage.getItem('theme'); if(saved) root.setAttribute('data-theme',saved);}catch(e){}
+  btn.addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+    var next=cur==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next);}catch(e){}
+  });
+})();
+</script>
+</body>
+</html>
